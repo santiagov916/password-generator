@@ -2,6 +2,18 @@
 var generateBtn = document.querySelector("#generate");
 
 function generatePassword() {
+    // 1. prompt user for password criteria
+    var passwordLength = (window.prompt("Let's start with some basic questions. How long do you want you password? (Must be between 8 and 128 characters long)"));
+    // create arrays for each category 
+    let arrUppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",];
+ 
+    let arrLowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+ 
+    let arrSpecial = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "{", "}", "[", "]", ";", ":", ",", ".",  "/", "?", "~"];
+ 
+    let arrNumbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ];
+ 
+
 
    // check password length and verify length meets the length
    if (passwordLength < 8) {
