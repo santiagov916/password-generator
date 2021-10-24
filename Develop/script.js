@@ -2,16 +2,16 @@
 var generateBtn = document.querySelector("#generate");
 
 // create arrays for each category 
-let uppercaseArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",];
+let uppercaseArr = ["ABCDEFGHIJKLMNOPQRSTUVWXYZ"];
 
-let lowercaseArr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+let lowercaseArr = ["abcdefghijklmnopqrstuvwxyz"];
 
-let specialChar = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "{", "}", "[", "]", ";", ":", ",", ".",  "/", "?", "~"];
+let specialChar = ["@#$%^&*_=+-/€.?<>)"];
 
-let numbersChar = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+let numbersChar = ["@#$%^&*_=+-/€.?<>)"];
 
-var charTotalArr = "";
-var finalPassword = "";
+var charTotalArr = [];
+var finalPassword = [];
 
 function generatePassword() {
       // 1. prompt passwordLength
@@ -48,7 +48,7 @@ function generatePassword() {
 
     if (!addLowerCase && !addUpperCase && !addNumbers && !addSymbols) {
     alert("Please select at least one or more character choices.");
-    passwordCriteria();
+      sendPassword();
   }
   else {
     if (addLowerCase) {
@@ -62,15 +62,22 @@ function generatePassword() {
     }
     if (addSymbols) {
       charTotalArr += specialChar;
+      console.log(charTotalArr);
     }
-    console.log(passwordLength);
-
     // math random generator
+      for (var i = 0; i < passwordLength; i++) {
+      finalPassword = finalPassword + charTotalArr[Math.floor(Math.random() * charTotalArr.length)];
+    }
   }
+  // var finalPassword = finalPassword + Math.floor(Math.random(passwordLength));
+  // console.log(finalPassword);
   
-  return generatePassword;
+  console.log(typeof(finalPassword));
+  // console.log(finalPassword.join(''));
 }
+return finalPassword;
 };
+
 
 function writePassword() {
   var password = generatePassword();
