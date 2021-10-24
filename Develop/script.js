@@ -1,47 +1,77 @@
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
 
+// create arrays for each category 
+let uppercaseArr = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",];
+
+let lowercaseArr = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+let specialChar = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "{", "}", "[", "]", ";", ":", ",", ".",  "/", "?", "~"];
+
+let numbersChar = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+
+var charTotalArr = "";
+var finalPassword = "";
+
 function generatePassword() {
-    // 1. prompt user for password criteria
-    var passwordLength = (window.prompt("Let's start with some basic questions. How long do you want you password? (Must be between 8 and 128 characters long)"));
-    // create arrays for each category 
-    let arrUppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z",];
- 
-    let arrLowercase = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
- 
-    let arrSpecial = ["!", "@", "#", "$", "%", "^", "&", "*", "(", ")", "{", "}", "[", "]", ";", ":", ",", ".",  "/", "?", "~"];
- 
-    let arrNumbers = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", ];
- 
+      // 1. prompt passwordLength
+      var passwordLength = window.prompt("Between 8 and 128 characters, how long do you want your password to be?");
 
+      passwordLength = parseInt(passwordLength);
 
-   // check password length and verify length meets the length
-   if (passwordLength < 8) {
-     window.prompt("Must be greater than 8!");
-     return generatePassword();
-   } else if (passwordLength > 128) {
-    window.prompt("Must be less than 128!")
-    return generatePassword();
-   } else if (isNaN(passwordLength)) {
-     window.prompt("Must be a number!");
-     return generatePassword();
-   } else if(passwordLength) {
-     window.alert(passwordLength + ", Ok great now let's get specific");
-     passwordCriteria();
-   };
+      console.log(passwordLength);
 
-  // b. lowercase, uppercase, numbers, special character
+      if (passwordLength < 8 || passwordLength > 128) {
+        alert("invalid. Enter a different number.")
+        generatePassword();
+      }
+      else if (passwordLength === "") {
+        alert("enter a valid length.")
+        generatePassword();
+      }
+      else if (isNaN.passwordLength) {
+        alert("enter a number.")
+        generatePassword();
+      }
+      else if (passwordLength  > 8 || passwordLength < 128) {
+        alert(passwordLength + ", Ok great.");
+        sendPassword();
+      }
 
-  // 2. validate the input 
+      
+      function sendPassword() {
+        
+        var addLowerCase = window.confirm("Lowercase Letters?");
+        var addUpperCase = window.confirm("Uppercase Letters?");
+        var addNumbers = window.confirm("Numbers?");
+        var addSymbols = window.confirm("special characters?");
 
-  // 3. Generate password based on criteria
+    if (!addLowerCase && !addUpperCase && !addNumbers && !addSymbols) {
+    alert("Please select at least one or more character choices.");
+    passwordCriteria();
+  }
+  else {
+    if (addLowerCase) {
+      charTotalArr += lowercaseArr;
+    }
+    if (addUpperCase) {
+      charTotalArr += uppercaseArr;
+    }
+    if (addNumbers) {
+      charTotalArr += numbersChar;
+    }
+    if (addSymbols) {
+      charTotalArr += specialChar;
+    }
+    console.log(passwordLength);
 
-  // 4. Display password to the page
+    // math random generator
+  }
   
-  return "Generated password will go here";
+  return generatePassword;
 }
+};
 
-// Write password to the #password input
 function writePassword() {
   var password = generatePassword();
   var passwordText = document.querySelector("#password");
@@ -52,12 +82,6 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
-
-
-
-
-
-
 
 // AS AN employee with access to sensitive data
 // I WANT to randomly generate a password that meets certain criteria
