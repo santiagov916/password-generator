@@ -16,4 +16,4 @@ THE LENGTH, IF NOT, YOU WILL RETURN BACK TO THE 'LOWERCASE' PROMPT UNTIL YOU GIV
 
 LOGIC AN ARRAY OF CODE TO WORK WITH!
 
-![](develop/images/Screen Shot 2021-10-23 at 11.38.28 PM.png)
+![](develop/images/finish-product.png)
